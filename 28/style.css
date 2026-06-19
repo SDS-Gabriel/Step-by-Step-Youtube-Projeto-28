@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0c102b; /* Fundo escuro do vídeo */
+}
+
+.btn {
+    position: relative;
+    width: 220px;
+    height: 70px;
+    border: 4px solid #00d2ff;
+    box-shadow: 0 0 15px #00d2ff;
+    border-radius: 50px;
+    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.btn:hover {
+    box-shadow: 0 0 35px #00d2ff;
+}
+
+.btn a {
+    position: relative;
+    text-decoration: none;
+    color: #00d2ff;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    line-height: 62px; /* Alinha o texto verticalmente */
+    z-index: 1;
+    transition: 0.5s;
+}
+
+.btn:hover a {
+    color: #fff; /* O texto fica branco quando o líquido sobe */
+}
+
+/* Configuração do preenchimento líquido */
+.btn .wave {
+    position: absolute;
+    top: calc(100% + 20px); /* Escondido abaixo do botão inicialmente */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #00d2ff;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+    transition: 0.5s;
+    z-index: 0;
+}
+
+.btn:hover .wave {
+    top: 0; /* Sobe para preencher o botão no hover */
+}
+
+/* Elementos simuladores de ondas através de rotação */
+.btn .wave::before,
+.btn .wave::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 250px;
+    height: 250px;
+    background: #0c102b; /* Mesma cor do fundo do body */
+    transform: translateX(-50%);
+    border-radius: 42%; /* Cria o aspecto arredondado da onda */
+}
+
+.btn .wave::before {
+    animation: rotateWave 5s linear infinite;
+}
+
+.btn .wave::after {
+    animation: rotateWave 10s linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes rotateWave {
+    0% {
+        transform: translate(-50%, -70%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -70%) rotate(360deg);
+    }
+}
